@@ -30,8 +30,13 @@ def edit(request):
     return None
 
 
-def delete(request):
-    return None
+def delete(request, superhero_id):
+    Superhero.objects.get(id=superhero_id).delete()
+    all_heroes = Superhero.objects.all()
+    context = {
+        'all_heroes': all_heroes
+    }
+    return render(request, 'superheroes/index.html', context)
 
 
 def detail(request, superhero_id):
