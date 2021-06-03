@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,9 +6,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/background.css' %}">
     <title>Edit Hero</title>
 </head>
-<body>
+<body class="full-height">
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><h2><a href="{% url 'superheroes:index' %}" class="nav-link text-dark">Home</a> </h2></li>
+        <li class="nav-item"><h2><a href="{% url 'superheroes:create' %}" class="nav-link text-dark">Add superhero</a> </h2></li>
+        <li class="nav-item"><h2><a href="{% url 'superheroes:delete' hero.id %}" class="nav-link text-dark">Delete hero</a></h2></li>
+        <li class="nav-item"><h2><a href="{% url 'superheroes:edit' hero.id %}" class="nav-link text-dark">Edit hero</a> </h2></li>
+    </ul>
+    </header>
+</div>
+<div class="container"><h1>Edit Hero</h1></div>
+<div class="container">
 <form action="{% url 'superheroes:edit' hero.id %}" method="post">
     {% csrf_token %}
     Name: <input type="text" name="name" id="name" value="{{hero.name}}"><br>
@@ -17,5 +32,6 @@
     Catch Phrase: <input type="text" name="catch_phrase" id="catch_phrase" value="{{hero.catch_phrase}}"><br>
     <input type="submit" value="Edit">
 </form>
+</div>
 </body>
 </html>
