@@ -35,7 +35,7 @@ def delete(request):
 
 
 def detail(request, superhero_id):
-    hero = Superhero.objects.get(superhero_id)
+    hero = Superhero.objects.get(id=superhero_id)
     context = {
         'hero': hero
     }
