@@ -37,7 +37,10 @@ def edit(request, superhero_id):
         hero.save()
         return HttpResponseRedirect(reverse('superheroes:index'))
     else:
-        return render(request, 'superheroes/edit.html')
+        context = {
+            'hero': hero
+        }
+        return render(request, 'superheroes/edit.html', context)
 
 
 def delete(request, superhero_id):
