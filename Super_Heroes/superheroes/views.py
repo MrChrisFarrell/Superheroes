@@ -26,12 +26,23 @@ def create(request):
         return render(request, 'superheroes/create.html')
 
 
-def edit(request):
-    return None
+def edit(request, superhero_id):
+    hero = Superhero.objects.get(id=superhero_id)
+    if request.method == 'POST':
+        hero.name = request.POST.get('name')
+        hero.alter_ego = request.POST.get('alter_ego')
+        hero.primary_ability = request.POST.get('primary_ability')
+        hero.secondary_ability = request.POST.get('secondary_ability')
+        hero.catch_phrase = request.POST.get('catch_phrase')
+        hero.save()
+        return HttpResponseRedirect(reverse('superheroes:index'))
+    else:
+        return render(request, 'superheroes/edit.html')
 
 
 def delete(request, superhero_id):
-    Superhero.objects.get(id=superhero_id).delete()
+    hero = Superhero.objects.get(id=superhero_id)
+    hero.delete()
     all_heroes = Superhero.objects.all()
     context = {
         'all_heroes': all_heroes

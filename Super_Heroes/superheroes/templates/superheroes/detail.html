@@ -8,8 +8,12 @@
     <title>Details</title>
 </head>
 <body>
-<hi>{{hero.name}}</hi>
+<h1>{{hero.name}}</h1>
+<h2><a href="{% url 'superheroes:delete' hero.id %}">Delete hero</a></h2>
+<h2><a href="{% url 'superheroes:edit' hero.id %}">Edit hero</a> </h2>
 <ul>
+
+    <li><h2> Hero ID - {{hero.id}}</h2></li>
     <li><h2> Alter Ego - {{hero.alter_ego}}</h2></li>
     <li><h2> Primary Ability - {{hero.primary_ability}}</h2></li>
     <li><h2> Secondary Ability - {{hero.secondary_ability}}</h2></li>
