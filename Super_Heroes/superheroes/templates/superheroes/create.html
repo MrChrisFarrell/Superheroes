@@ -21,7 +21,7 @@
 </div>
 <div class="container"><h1>Create Hero</h1></div>
 <div class="container">
-<form action="{% url 'superheroes:create' %}" method="post">
+<form class="large-text" action="{% url 'superheroes:create' %}" method="post">
     {% csrf_token %}
     Name: <input type="text" name="name" id="name"><br>
     Alter Ego: <input type="text" name="alter_ego" id="alter_ego"><br>
